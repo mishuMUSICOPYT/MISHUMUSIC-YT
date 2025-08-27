@@ -39,8 +39,8 @@ GIT_TOKEN = getenv(
     "GIT_TOKEN", "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"
 )  # Fill this variable if your upstream repository is private
 
-SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/StylishNameFont")
-SUPPORT_GROUP = getenv("SUPPORT_GROUP", "https://t.me/Friend_ki_Masti")
+SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/PRO_BOT_II")
+SUPPORT_GROUP = getenv("SUPPORT_GROUP", "https://t.me/ETY_ANIME_GROUP")
 
 # Set this to True if you want the assistant to automatically leave chats after an interval
 AUTO_LEAVING_ASSISTANT = bool(getenv("AUTO_LEAVING_ASSISTANT", False))
@@ -81,7 +81,7 @@ confirmer = {}
 
 
 START_IMG_URL = getenv(
-    "START_IMG_URL", "https://files.catbox.moe/jt7b5k.jpg"
+    "START_IMG_URL", "https://graph.org/file/19992bb0806e3ed9af0fa-3b14366e2e0c45e44a.jpg"
 )
 PING_IMG_URL = getenv(
     "PING_IMG_URL", "https://envs.sh/qEB.jpg"
@@ -117,5 +117,6 @@ if SUPPORT_GROUP:
         raise SystemExit(
             "[ERROR] - Your SUPPORT_GROUP url is wrong. Please ensure that it starts with https://"
         )
+
 
 
