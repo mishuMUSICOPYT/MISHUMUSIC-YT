@@ -278,4 +278,3 @@ async def cancelcmd(_, message):
         return await message.reply_text("No tagging process is currently running!")
 
 MODULE = "Tᴀɢᴀʟʟ"
-HELP = """
