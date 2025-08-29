@@ -142,7 +142,7 @@ EMOJI = [
     "🐦🦂🕷️🕸️🐚",
     "🥪🍰🥧🍨🍨",
     " 🥬🍉🧁🧇",
-]
+    ]
 
 TAGMES = [
     " 𝐇𝐞𝐲 𝐁𝐚𝐛𝐲 𝐊𝐚𝐡𝐚 𝐇𝐨🤗🥱 ",
@@ -196,7 +196,7 @@ TAGMES = [
     " 𝐁𝐲 𝐓𝐚𝐭𝐚 𝐌𝐚𝐭 𝐁𝐚𝐭 𝐊𝐚𝐫𝐧𝐚 𝐀𝐚𝐣 𝐊𝐞 𝐁𝐚𝐝😠 ",
     " 𝐌𝐨𝐦 𝐃𝐚𝐝 𝐊𝐚𝐢𝐬𝐞 𝐇𝐚𝐢𝐧..?❤ ",
 ]
-mode = "text_on_cmd"
+    mode = "text_on_cmd"
         msg = message.text
     elif message.reply_to_message:
         mode = "text_on_reply"
@@ -220,7 +220,7 @@ mode = "text_on_cmd"
         if :
             continue
         usrnum += 1
-        usrtxt += "<a href='tg://user?id={}'>{}</a>".format(
+        usrtxt += "<a href='tg://user?id={}>{}</a>".format(
             usr.user.id, usr.user.first_name
         )
 
