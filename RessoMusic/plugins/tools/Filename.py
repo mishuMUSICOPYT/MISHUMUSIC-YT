@@ -1,4 +1,4 @@
-import asyncio
+ import asyncio
 
 from pyrogram import filters
 
@@ -9,7 +9,7 @@ SPAM_CHATS = []
 
 
 @app.on_message(
-   filters.command(["all","mention", "mentionall"], prefixes=["/", "@", ".", "#"])
+    filters.command(["all", "mention", "mentionall"], prefixes=["/", "@", ".", "#"])
     & admin_filter
 )
 async def tag_all_users(_, message):
@@ -93,7 +93,7 @@ async def cancelcmd(_, message):
 
     else:
         await message.reply_text("ɴᴏ ᴘʀᴏᴄᴇss ᴏɴɢᴏɪɴɢ!")
-        return
+        return            
 import asyncio
 import random
 
