@@ -138,7 +138,7 @@ async def tag_all_users(_, message):
     if not admin:
         return await message.reply_text("Only admins can use this command.")
 
-if message.chat.id in SPAM_CHATS:  
+    if message.chat.id in SPAM_CHATS:  
         return await message.reply_text(  
             "Tagging process is already running. Use /cancel to stop it."  
         )  
@@ -146,7 +146,7 @@ if message.chat.id in SPAM_CHATS:
     replied = message.reply_to_message  
     if len(message.command) < 2 and not replied:  
         return await message.reply_text(  
-            "Give some text to tag all, like: @all Hi Friends"  
+            "Give some text to tag all, like: `@all Hi Friends`"  
         )  
     
     try:  
@@ -206,7 +206,7 @@ async def tag_all_admins(_, message):
     replied = message.reply_to_message  
     if len(message.command) < 2 and not replied:  
         return await message.reply_text(  
-            "Give some text to tag admins, like: @admins Hi Friends"  
+            "Give some text to tag admins, like: `@admins Hi Friends`"  
         )  
     
     try:  
