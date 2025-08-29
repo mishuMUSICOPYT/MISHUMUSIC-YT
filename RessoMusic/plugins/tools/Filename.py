@@ -8,9 +8,8 @@ import re
 from RessoMusic import app
 
 SPAM_CHATS = []
-TAGMES = [
-    
-    " 𝐇𝐞𝐲 𝐁𝐚𝐛𝐲 𝐊𝐚𝐡𝐚 𝐇𝐨🤗🥱 ",
+EMOJI = [
+    " 𝐇𝐞𝐲 𝐁𝐚𝐛𝐲 𝐊𝐚𝐡𝐚 𝐇𝐨🤗🥱 ",
     " 𝐎𝐲𝐞 𝐒𝐨 𝐆𝐲𝐞 𝐊𝐲𝐚 𝐎𝐧𝐥𝐢𝐧𝐞 𝐀𝐚𝐨😊 ",
     " 𝐕𝐜 𝐂𝐡𝐚𝐥𝐨 𝐁𝐚𝐭𝐞𝐧 𝐊𝐚𝐫𝐭𝐞 𝐇𝐚𝐢𝐧 𝐊𝐮𝐜𝐡 𝐊𝐮𝐜𝐡😃 ",
     " 𝐊𝐡𝐚𝐧𝐚 𝐊𝐡𝐚 𝐋𝐢𝐲𝐞 𝐉𝐢..??🥲 ",
@@ -28,7 +27,7 @@ TAGMES = [
     " 𝐀𝐚𝐩 𝐊𝐚𝐡𝐚 𝐒𝐞 𝐇𝐨..??🙃 ",
     " 𝐇𝐞𝐥𝐥𝐨 𝐉𝐢 𝐍𝐚𝐦𝐚𝐬𝐭𝐞😛 ",
     " 𝐇𝐞𝐥𝐥𝐨 𝐁𝐚𝐛𝐲 𝐊𝐤𝐫𝐡..?🤔 ",
-    " 𝐃𝐨 𝐘𝐨𝐮 𝐊𝐧𝐨𝐰 𝐖𝐡𝐨 𝐈𝐬 𝐌𝐲 𝐎𝐰𝐧𝐞𝐫 [@II_MUNNA_II].? ",
+    " 𝐃𝐨 𝐘𝐨𝐮 𝐊𝐧𝐨𝐰 𝐖𝐡𝐨 𝐈𝐬 𝐌𝐲 𝐎𝐰𝐧𝐞𝐫 [@PRO_BOT_II].? ",
     " 𝐂𝐡𝐥𝐨 𝐊𝐮𝐜𝐡 𝐆𝐚𝐦𝐞 𝐊𝐡𝐞𝐥𝐭𝐞 𝐇𝐚𝐢𝐧.🤗 ",
     " 𝐀𝐮𝐫 𝐁𝐚𝐭𝐚𝐨 𝐊𝐚𝐢𝐬𝐞 𝐇𝐨 𝐁𝐚𝐛𝐲😇 ",
     " 𝐓𝐮𝐦𝐡𝐚𝐫𝐢 𝐌𝐮𝐦𝐦𝐲 𝐊𝐲𝐚 𝐊𝐚𝐫 𝐑𝐚𝐡𝐢 𝐇𝐚𝐢🤭 ",
@@ -56,7 +55,7 @@ TAGMES = [
     " 𝐓𝐮𝐦𝐡𝐞 𝐊𝐨𝐧 𝐒𝐚 𝐌𝐮𝐬𝐢𝐜 𝐒𝐮𝐧𝐧𝐚 𝐏𝐚𝐬𝐚𝐧𝐝 𝐇𝐚𝐢..?🙃 ",
     " 𝐒𝐚𝐫𝐚 𝐊𝐚𝐦 𝐊𝐡𝐚𝐭𝐚𝐦 𝐇𝐨 𝐆𝐲𝐚 𝐀𝐚𝐩𝐤𝐚..?🙃 ",
     " 𝐊𝐚𝐡𝐚 𝐒𝐞 𝐇𝐨 𝐀𝐚𝐩😊 ",
-    " 𝐒𝐮𝐧𝐨 𝐍𝐚 [@II_MUNNA_II]🧐 ",
+    " 𝐒𝐮𝐧𝐨 𝐍𝐚 [@PRO_BOT_II]🧐 ",
     " 𝐌𝐞𝐫𝐚 𝐄𝐤 𝐊𝐚𝐚𝐦 𝐊𝐚𝐫 𝐃𝐨𝐠𝐞..? ",
     " 𝐁𝐲 𝐓𝐚𝐭𝐚 𝐌𝐚𝐭 𝐁𝐚𝐭 𝐊𝐚𝐫𝐧𝐚 𝐀𝐚𝐣 𝐊𝐞 𝐁𝐚𝐝😠 ",
     " 𝐌𝐨𝐦 𝐃𝐚𝐝 𝐊𝐚𝐢𝐬𝐞 𝐇𝐚𝐢𝐧..?❤ ",
@@ -88,28 +87,15 @@ TAGMES = [
     " 𝐀𝐚𝐨 𝐏𝐚𝐫𝐭𝐲 𝐊𝐚𝐫𝐭𝐞 𝐇𝐚𝐢𝐧😋🥳 ",
     " 𝐇𝐞𝐦𝐥𝐨𝐨🧐 ",
     " 𝐌𝐮𝐣𝐡𝐞 𝐁𝐡𝐮𝐥 𝐆𝐲𝐞 𝐊𝐲𝐚🥺 ",
-    " 𝐘𝐚𝐡𝐚 𝐀𝐚 𝐉𝐚𝐨:-[@II-MUNNA_II]  𝐌𝐚𝐬𝐭𝐢 𝐊𝐚𝐫𝐞𝐧𝐠𝐞 🤭🤭 ",
+    " 𝐘𝐚𝐡𝐚 𝐀𝐚 𝐉𝐚𝐨:-[II]  𝐌𝐚𝐬𝐭𝐢 𝐊𝐚𝐫𝐞𝐧𝐠𝐞 🤭🤭 ",
     " 𝐓𝐫𝐮𝐭𝐡 𝐀𝐧𝐝 𝐃𝐚𝐫𝐞 𝐊𝐡𝐞𝐥𝐨𝐠𝐞..? 😊 ",
     " 𝐀𝐚𝐣 𝐌𝐮𝐦𝐦𝐲 𝐍𝐞 𝐃𝐚𝐭𝐚 𝐘𝐫🥺🥺 ",
     " 𝐉𝐨𝐢𝐧 𝐊𝐚𝐫 𝐋𝐨🤗 ",
     " 𝐄𝐤 𝐃𝐢𝐥 𝐇𝐚𝐢 𝐄𝐤 𝐃𝐢𝐥 𝐇𝐢 𝐓𝐨 𝐇𝐚𝐢😗😗 ",
     " 𝐓𝐮𝐦𝐡𝐚𝐫𝐞 𝐃𝐨𝐬𝐭 𝐊𝐚𝐡𝐚 𝐆𝐲𝐞🥺 ",
-    " 𝐌𝐲 𝐂𝐮𝐭𝐞 𝐎𝐰𝐧𝐞𝐫{ @II_MUNNA_II}🥰 ",
+    " 𝐌𝐲 𝐂𝐮𝐭𝐞 𝐎𝐰𝐧𝐞𝐫{ II}🥰 ",
     " 𝐊𝐚𝐡𝐚 𝐊𝐡𝐨𝐲𝐞 𝐇𝐨 𝐉𝐚𝐚𝐧😜 ",
-    " 𝐆𝐨𝐨𝐝 𝐍8 𝐉𝐢 𝐁𝐡𝐮𝐭 𝐑𝐚𝐭 𝐇𝐨 𝐠𝐲𝐢🥰 ",
-    "𝐎𝚈𝙴 𝐕𝙲 𝐀𝙰𝙾 𝐍𝙰 𝐏𝙻𝚂🥲",
-    "𝐉𝙾𝙸𝙽 𝐕𝙲 𝐅𝙰𝚂𝚃 𝐈𝚃𝚂 𝐈𝙼𝙰𝙿𝙾𝚁𝚃𝙰𝙽𝚃😬",
-    "𝐂𝙾𝙼𝙴 𝚅𝙲 𝙱𝙰𝙱𝚈 𝙵𝙰𝚂𝚃🏓",
-    "𝐁𝙰𝙱𝚈 𝐓𝚄𝙼 𝐁𝙷𝙸 𝐓𝙷𝙾𝚁𝙰 𝐕𝙲 𝐀𝙰𝙽𝙰🥰",
-    "𝐎𝚈𝙴 𝐂𝙷𝙰𝙼𝚃𝚄 𝐕𝙲 𝐀𝙰 𝐄𝙺 𝐄𝙰𝙼 𝐇𝙰𝙸🤨",
-    "𝐒𝚄𝙽𝙾 𝐕𝙲 𝐉𝙾𝙸𝙽 𝐊𝚁 𝐋𝙾🤣",
-    "𝐕𝙲 𝐀𝙰 𝐉𝙰𝙸𝚈𝙴 𝐄𝙺 𝐁𝙰𝚁😁",
-    "𝐕𝙲 𝐓𝙰𝙿𝙺𝙾 𝐆𝙰𝙼𝙴 𝐂𝙷𝙰𝙻𝚄 𝐇𝙰𝙸⚽",
-    "𝐕𝙲 𝐀𝙰𝙾 𝐁𝙰𝚁𝙽𝙰 𝐁𝙰𝙽 𝐇𝙾 𝐉𝙰𝙾𝙶𝙴🥺",
-    "𝐒𝙾𝚁𝚁𝚈 𝐕𝙰𝙱𝚈 𝐏𝙻𝚂 𝐕𝙲 𝐀𝙰 𝐉𝙰𝙾 𝐍𝙰😥",
-    "𝐕𝙲 𝐀𝙰𝙽𝙰 𝐄𝙺 𝐂𝙷𝙸𝙹 𝐃𝙸𝙺𝙷𝙰𝚃𝙸 𝐇𝚄🙄",
-    "𝐕𝙲 𝐌𝙴 𝐂𝙷𝙴𝙲𝙺 𝐊𝚁𝙺𝙴 𝐁𝙰𝚃𝙰𝙾 𝐓𝙾 𝐒𝙾𝙽𝙶 𝐏𝙻𝙰𝚈 𝐇𝙾 𝐑𝙷𝙰 𝐇?🤔",
-    "𝐕𝙲 𝐉𝙾𝙸𝙽 𝐊𝚁𝙽𝙴 𝐌𝙴 𝐊𝚈𝙰 𝐉𝙰𝚃𝙰 𝐇 𝐓𝙷𝙾𝚁𝙰 𝐃𝙴𝚁 𝐊𝙰𝚁 𝐋𝙾 𝐍𝙰🙂",
+    " 𝐆𝐨𝐨𝐝 𝐍8 𝐉𝐢 𝐁𝐡𝐮𝐭 𝐑𝐚𝐭 𝐇𝐨 𝐠𝐲𝐢 𝐣𝐢 ",
 ]
 
 def clean_text(text):
@@ -133,20 +119,20 @@ async def process_members(chat_id, members, text=None, replied=None):
     usertxt = ""
     emoji_sequence = random.choice(EMOJI)
     emoji_index = 0
-
+    
     for member in members:
         if chat_id not in SPAM_CHATS:
             break
         if member.user.is_deleted or member.user.is_bot:
             continue
-
+            
         tagged_members += 1
         usernum += 1
-
+        
         emoji = emoji_sequence[emoji_index % len(emoji_sequence)]
         usertxt += f"[{emoji}](tg://user?id={member.user.id}) "
         emoji_index += 1
-
+        
         if usernum == 5:
             try:
                 if replied:
@@ -172,7 +158,7 @@ async def process_members(chat_id, members, text=None, replied=None):
             except Exception as e:
                 await app.send_message(chat_id, f"Error while tagging: {str(e)}")
                 continue
-
+    
     if usernum > 0 and chat_id in SPAM_CHATS:
         try:
             if replied:
@@ -190,7 +176,7 @@ async def process_members(chat_id, members, text=None, replied=None):
                 )
         except Exception as e:
             await app.send_message(chat_id, f"Error sending final batch: {str(e)}")
-
+    
     return tagged_members
 
 @app.on_message(
@@ -205,33 +191,33 @@ async def tag_all_users(_, message):
         return await message.reply_text(  
             "Tagging process is already running. Use /cancel to stop it."  
         )  
-
+    
     replied = message.reply_to_message  
     if len(message.command) < 2 and not replied:  
         return await message.reply_text(  
             "Give some text to tag all, like: `@all Hi Friends`"  
         )  
-
+    
     try:  
         # Get all members at once to avoid multiple iterations
         members = []
         async for m in app.get_chat_members(message.chat.id):
             members.append(m)
-
+        
         total_members = len(members)
         SPAM_CHATS.append(message.chat.id)
-
+        
         text = None
         if not replied:
             text = clean_text(message.text.split(None, 1)[1])
-
+        
         tagged_members = await process_members(
             message.chat.id,
             members,
             text=text,
             replied=replied
         )
-
+        
         summary_msg = f"""
 ✅ Tagging completed!
 
@@ -265,13 +251,13 @@ async def tag_all_admins(_, message):
         return await message.reply_text(  
             "Tagging process is already running. Use /cancel to stop it."  
         )  
-
+    
     replied = message.reply_to_message  
     if len(message.command) < 2 and not replied:  
         return await message.reply_text(  
             "Give some text to tag admins, like: `@admins Hi Friends`"  
         )  
-
+    
     try:  
         # Get all admins at once
         members = []
@@ -279,21 +265,21 @@ async def tag_all_admins(_, message):
             message.chat.id, filter=ChatMembersFilter.ADMINISTRATORS  
         ):
             members.append(m)
-
+        
         total_admins = len(members)
         SPAM_CHATS.append(message.chat.id)
-
+        
         text = None
         if not replied:
             text = clean_text(message.text.split(None, 1)[1])
-
+        
         tagged_admins = await process_members(
             message.chat.id,
             members,
             text=text,
             replied=replied
         )
-
+        
         summary_msg = f"""
 ✅ Admin tagging completed!
 
@@ -319,7 +305,7 @@ Tagged admins: {tagged_admins}
             "cancel",
             "cancelmention",
             "offmention",
-            "utagstop",
+            "mentionoff",
             "cancelall",
         ],
         prefixes=["/", "@"],
