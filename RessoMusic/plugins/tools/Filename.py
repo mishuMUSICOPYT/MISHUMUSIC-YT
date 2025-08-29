@@ -5,7 +5,7 @@ from pyrogram.errors import FloodWait
 import random
 import re
 
-from RessoMusic import app
+from MISHUMUSIC-YT import app
 
 SPAM_CHATS = []
 EMOJI = [
