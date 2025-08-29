@@ -93,7 +93,7 @@ async def cancelcmd(_, message):
 
     else:
         await message.reply_text("ɴᴏ ᴘʀᴏᴄᴇss ᴏɴɢᴏɪɴɢ!")
-        return /all {msg}
+        return/all {msg}
 import asyncio
 import random
 
@@ -266,4 +266,4 @@ async def cancel_spam(client, message):
             spam_chats.remove(message.chat.id)
         except:
             pass
-        return await message.reply("🌷 BOT TAG PROSESS STOPPED  🎉") /tagall
+        return await message.reply("🌷 BOT TAG PROSESS STOPPED  🎉")/tagall
