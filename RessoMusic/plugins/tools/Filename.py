@@ -196,14 +196,14 @@ TAGMES = [
     " 𝐁𝐲 𝐓𝐚𝐭𝐚 𝐌𝐚𝐭 𝐁𝐚𝐭 𝐊𝐚𝐫𝐧𝐚 𝐀𝐚𝐣 𝐊𝐞 𝐁𝐚𝐝😠 ",
     " 𝐌𝐨𝐦 𝐃𝐚𝐝 𝐊𝐚𝐢𝐬𝐞 𝐇𝐚𝐢𝐧..?❤ ",
 ]
-    mode = "text_on_cmd"
-        msg = message.text
-    elif message.reply_to_message:
-        mode = "text_on_reply"
-        msg = message.reply_to_message
-        if not msg:
-            return await message.reply(
-                "/tagall  𝐓𝐲𝐩𝐞 𝐋𝐢𝐤𝐞 𝐓𝐡𝐢𝐬 / 𝐑𝐞𝐩𝐥𝐲 𝐀𝐧𝐲 𝐌𝐞𝐬𝐬𝐚𝐠𝐞 𝐍𝐞𝐱𝐭 𝐓𝐢𝐦𝐞 ..."
+mode = "text_on_cmd"
+    msg = message.text
+elif message.reply_to_message:
+    mode = "text_on_reply"
+    msg = message.reply_to_message
+       if not msg:
+       return await message.reply(
+          "/tagall  𝐓𝐲𝐩𝐞 𝐋𝐢𝐤𝐞 𝐓𝐡𝐢𝐬 / 𝐑𝐞𝐩𝐥𝐲 𝐀𝐧𝐲 𝐌𝐞𝐬𝐬𝐚𝐠𝐞 𝐍𝐞𝐱𝐭 𝐓𝐢𝐦𝐞 ..."
             )
     else:
         return await message.reply(
