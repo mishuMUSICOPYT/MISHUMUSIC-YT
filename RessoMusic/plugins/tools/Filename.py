@@ -5,7 +5,7 @@ from pyrogram.errors import FloodWait
 import random
 import re
 
-from MISHUMUSIC-YT import app
+from RessoMusic import app
 
 SPAM_CHATS = []
 EMOJI = [
@@ -278,3 +278,18 @@ async def cancelcmd(_, message):
         return await message.reply_text("No tagging process is currently running!")
 
 MODULE = "Tᴀɢᴀʟʟ"
+HELP = """
+@all or /all | /tagall or @tagall | /mentionall or @mentionall [text] or [reply to any message] - Tag all users in your group with random emojis (changes every 5 users)
+
+/admintag or @admintag | /adminmention or @adminmention | /admins or @admins [text] or [reply to any message] - Tag all admins in your group with random emojis (changes every 5 users)
+
+/stopmention or @stopmention | /cancel or @cancel | /offmention or @offmention | /mentionoff or @mentionoff | /cancelall or @cancelall - Stop any running tagging process
+
+Note:
+
+1. These commands can only be used by admins
+2. The bot and assistant must be admins in your group
+3. Users will be tagged with random emojis that link to their profiles
+4. After completion, you'll get a summary with counts
+5. Tags 5 users at a time with unique emoji sequence for each batch
+"""
