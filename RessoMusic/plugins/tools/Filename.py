@@ -1,5 +1,3 @@
-import asyncio
-
 from pyrogram import filters
 
 from RessoMusic import app
@@ -93,8 +91,7 @@ async def cancelcmd(_, message):
 
     else:
         await message.reply_text("ɴᴏ ᴘʀᴏᴄᴇss ᴏɴɢᴏɪɴɢ!")
-        return/all {msg}
-import asyncio
+        return
 import random
 
 from pyrogram import filters
@@ -266,4 +263,4 @@ async def cancel_spam(client, message):
             spam_chats.remove(message.chat.id)
         except:
             pass
-        return await message.reply("🌷 BOT TAG PROSESS STOPPED  🎉")/tagall
+        return await message.reply("🌷 BOT TAG PROSESS STOPPED  🎉")
