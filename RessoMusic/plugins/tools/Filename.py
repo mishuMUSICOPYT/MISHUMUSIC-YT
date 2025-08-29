@@ -195,8 +195,8 @@ TAGMES = [
     " 𝐌𝐞𝐫𝐚 𝐄𝐤 𝐊𝐚𝐚𝐦 𝐊𝐚𝐫 𝐃𝐨𝐠𝐞..? ",
     " 𝐁𝐲 𝐓𝐚𝐭𝐚 𝐌𝐚𝐭 𝐁𝐚𝐭 𝐊𝐚𝐫𝐧𝐚 𝐀𝐚𝐣 𝐊𝐞 𝐁𝐚𝐝😠 ",
     " 𝐌𝐨𝐦 𝐃𝐚𝐝 𝐊𝐚𝐢𝐬𝐞 𝐇𝐚𝐢𝐧..?❤ ",
-    ]
-    mode = "text_on_cmd"
+]
+mode = "text_on_cmd"
         msg = message.text
     elif message.reply_to_message:
         mode = "text_on_reply"
