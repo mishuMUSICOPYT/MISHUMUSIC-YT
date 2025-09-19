@@ -81,7 +81,7 @@ confirmer = {}
 
 
 START_IMG_URL = getenv(
-    "START_IMG_URL", "https://graph.org/file/19992bb0806e3ed9af0fa-3b14366e2e0c45e44a.jpg"
+    "START_IMG_URL", "https://graph.org/file/935a636a37866ff5713e0-d33355236cc1ba1632.jpg"
 )
 PING_IMG_URL = getenv(
     "PING_IMG_URL", "https://envs.sh/qEB.jpg"
@@ -117,6 +117,7 @@ if SUPPORT_GROUP:
         raise SystemExit(
             "[ERROR] - Your SUPPORT_GROUP url is wrong. Please ensure that it starts with https://"
         )
+
 
 
 
