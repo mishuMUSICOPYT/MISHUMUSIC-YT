@@ -84,7 +84,7 @@ START_IMG_URL = getenv(
     "START_IMG_URL", "https://graph.org/file/8f90c0842eb733f40c21e-4486b46d0118b4bf63.jpg"
 )
 HELP_IMG_URL = getenv(
-    "HELP_IMG_URL", ""
+    "HELP_IMG_URL", "https://graph.org/file/305b0fa4588bf3adb8e41-fd810234b5e9a7d25f.jpg"
 )
 PING_IMG_URL = getenv(
     "PING_IMG_URL", "https://graph.org/file/7073bee19d57d78d956f8-6a3b4d4cf41cc594d6.jpg"
@@ -120,6 +120,7 @@ if SUPPORT_GROUP:
         raise SystemExit(
             "[ERROR] - Your SUPPORT_GROUP url is wrong. Please ensure that it starts with https://"
         )
+
 
 
 
