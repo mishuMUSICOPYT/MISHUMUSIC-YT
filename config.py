@@ -87,7 +87,7 @@ PING_IMG_URL = getenv(
     "PING_IMG_URL", "https://graph.org/file/7073bee19d57d78d956f8-6a3b4d4cf41cc594d6.jpg"
 )
 PLAYLIST_IMG_URL = "https://graph.org//file/3dfcffd0c218ead96b102.png"
-STATS_IMG_URL = "https://telegra.ph/file/1827dd6c414ce09098002.jpg"
+STATS_IMG_URL = "https://graph.org/file/6443928f184f86b9f4dd2-99975a7e3ca57d875b.jpg"
 TELEGRAM_AUDIO_URL = "https://graph.org//file/2f7debf856695e0ef0607.png"
 TELEGRAM_VIDEO_URL = "https://graph.org//file/2f7debf856695e0ef0607.png"
 STREAM_IMG_URL = "https://te.legra.ph/file/bd995b032b6bd263e2cc9.jpg"
@@ -117,6 +117,7 @@ if SUPPORT_GROUP:
         raise SystemExit(
             "[ERROR] - Your SUPPORT_GROUP url is wrong. Please ensure that it starts with https://"
         )
+
 
 
 
