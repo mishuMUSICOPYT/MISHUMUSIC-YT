@@ -4,7 +4,7 @@ from pyrogram.enums import ChatMemberStatus
 from pyrogram.errors import UserNotParticipant, FloodWait
 from pyrogram.types import Message
 
-from TEAMXMUSIC import app
+from RessoMusic import app
 from RessoMusic.utils.admin_filters import admin_filter
 
 spam_chats = set()
