@@ -1,6 +1,6 @@
 from pyrogram import filters
 
-from Oneforall.utils.admin_check import admin_check
+from RessoMusic.utils.admin_check import admin_check
 
 USE_AS_BOT = True
 
