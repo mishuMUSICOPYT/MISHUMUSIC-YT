@@ -1,7 +1,7 @@
 import asyncio
 import random
 
-from pyrogram import client filters
+from pyrogram import app filters
 from pyrogram.enums import ChatMemberStatus, ChatType
 from pyrogram.errors import UserNotParticipant
 
@@ -23,7 +23,7 @@ async def tag_all_users(_, message):
     if replied:
         SPAM_CHATS.append(message.chat.id)
         usernum, usertxt = 0, ""
-        async for m in client.get_chat_members(message.chat.id):
+        async for m in app.get_chat_members(message.chat.id):
             if message.chat.id not in SPAM_CHATS:
                 break
             usernum += 1
@@ -40,13 +40,13 @@ async def tag_all_users(_, message):
         text = message.text.split(None, 1)[1]
         SPAM_CHATS.append(message.chat.id)
         usernum, usertxt = 0, ""
-        async for m in client.get_chat_members(message.chat.id):
+        async for m in app.get_chat_members(message.chat.id):
             if message.chat.id not in SPAM_CHATS:
                 break
             usernum += 1
             usertxt += f"\n➥ [{m.user.first_name}](tg://user?id={m.user.id})"
             if usernum == 5:
-                await client.send_message(
+                await app.send_message(
                     message.chat.id,
                     f"{text}\n{usertxt}\n\n ➜ Ongoing tagging » /cancel",
                 )
