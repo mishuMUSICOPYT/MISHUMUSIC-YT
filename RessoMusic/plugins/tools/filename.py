@@ -22,7 +22,7 @@ async def tag_all_users(_, message: Message):
     usernum, usertxt, total_tagged = 0, "", 0
 
     try:
-        async for member in client.get_chat_members(message.chat.id):
+        async for m in app.get_chat_members(message.chat.id):
             if message.chat.id not in spam_chats:
                 break
 
