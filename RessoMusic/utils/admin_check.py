@@ -1,29 +1,47 @@
-from pyrogram.enums import ChatMemberStatus, ChatType
-from pyrogram.types import Message
+herefrom pyrogram import filters
+from pyrogram.types import Message, CallbackQuery
+from RessoMusic.utils.admin_check import is_admin, is_group_owner
+from RessoMusic.misc import SUDOERS
+from config import OWNER_ID
 
 
-async def admin_check(message: Message) -> bool:
-    if not message.from_user:
+def sudo_filter_func(_, __, obj: Message | CallbackQuery) -> bool:
+    msg = obj.message if isinstance(obj, CallbackQuery) else obj
+    return bool(
+        (
+            (msg.from_user and msg.from_user.id in SUDOERS)
+            or (msg.sender_chat and msg.sender_chat.id in SUDOERS)
+        )
+        and not getattr(msg, "edit_date", False)
+    )
+
+sudo_filter = filters.create(func=sudo_filter_func, name="SudoUsersFilter")
+
+
+async def admin_filter_func(_, __, obj: Message | CallbackQuery) -> bool:
+    msg = obj.message if isinstance(obj, CallbackQuery) else obj
+    if getattr(msg, "edit_date", False):
         return False
+    return await is_admin(msg)
 
-    if message.chat.type not in [ChatType.SUPERGROUP, ChatType.CHANNEL]:
+admin_filter = filters.create(func=admin_filter_func, name="AdminFilter")
+
+
+async def group_owner_filter_func(_, __, obj: Message | CallbackQuery) -> bool:
+    msg = obj.message if isinstance(obj, CallbackQuery) else obj
+    if getattr(msg, "edit_date", False):
         return False
+    return await is_group_owner(msg)
 
-    if message.from_user.id in [
-        777000,  # Telegram Service Notifications
-        6534087733,  # GroupwcgbrandedBot
-    ]:
-        return True
+owner_filter = filters.create(func=group_owner_filter_func, name="GroupOwnerFilter")
 
-    client = message._client
-    chat_id = message.chat.id
-    user_id = message.from_user.id
 
-    check_status = await client.get_chat_member(chat_id=chat_id, user_id=user_id)
-    if check_status.status not in [
-        ChatMemberStatus.OWNER,
-        ChatMemberStatus.ADMINISTRATOR,
-    ]:
-        return False
-    else:
-        return True
+def bot_owner_filter_func(_, __, obj: Message | CallbackQuery) -> bool:
+    msg = obj.message if isinstance(obj, CallbackQuery) else obj
+    return (
+        msg.from_user
+        and msg.from_user.id == OWNER_ID
+        and not getattr(msg, "edit_date", False)
+    )
+
+dev_filter = filters.create(func=bot_owner_filter_func, name="BotOwnerFilter")
