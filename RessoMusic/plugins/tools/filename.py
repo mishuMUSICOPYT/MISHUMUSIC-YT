@@ -1,7 +1,7 @@
 import asyncio
 import random
 
-from pyrogram import filters
+from pyrogram import client filters
 from pyrogram.enums import ChatMemberStatus, ChatType
 from pyrogram.errors import UserNotParticipant
 
