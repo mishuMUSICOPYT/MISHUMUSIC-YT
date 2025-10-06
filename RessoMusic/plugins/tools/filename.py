@@ -1,17 +1,17 @@
 import asyncio
-from pyrogram import Client, filters
+from pyrogram import client, filters
 from pyrogram.enums import ChatMemberStatus
 from pyrogram.errors import UserNotParticipant, FloodWait
 from pyrogram.types import Message
 
 from RessoMusic import app
-from RessoMusic.utils.admin_filters import admin_filter
+from RessoMusic.utils.branded_ban import admin_filter
 
 spam_chats = set()
 
 
 @app.on_message(filters.command(["utag", "all", "mention"]) & filters.group & admin_filter)
-async def tag_all_users(client: Client, message: Message):
+async def tag_all_users(client: client, message: Message):
     replied = message.reply_to_message
     text = message.text.split(None, 1)[1] if len(message.command) > 1 else ""
 
