@@ -1,5 +1,5 @@
 import asyncio
-from pyrogram import client, filters
+from pyrogram import filters
 from pyrogram.enums import ChatMemberStatus
 from pyrogram.errors import UserNotParticipant, FloodWait
 from pyrogram.types import Message
@@ -11,7 +11,7 @@ spam_chats = set()
 
 
 @app.on_message(filters.command(["utag", "all", "mention"]) & filters.group & admin_filter)
-async def tag_all_users(client: client, message: Message):
+async def tag_all_users(_, message: Message):
     replied = message.reply_to_message
     text = message.text.split(None, 1)[1] if len(message.command) > 1 else ""
 
@@ -63,7 +63,7 @@ async def tag_all_users(client: client, message: Message):
 
 
 @app.on_message(filters.command(["cancel", "ustop"]))
-async def cancel_spam(client: Client, message: Message):
+async def cancel_spam(_, message: Message):
     chat_id = message.chat.id
 
     if chat_id not in spam_chats:
