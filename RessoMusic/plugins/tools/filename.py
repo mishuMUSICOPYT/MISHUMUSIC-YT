@@ -1,110 +1,100 @@
 import asyncio
-import random
 
 from pyrogram import filters
-from pyrogram.enums import ChatMemberStatus, ChatType
-from pyrogram.errors import UserNotParticipant
 
 from RessoMusic import app
 from RessoMusic.utils.branded_ban import admin_filter
 
 SPAM_CHATS = []
-spam_chats = []
 
-# --------------------------- TAG ALL USERS --------------------------- #
+
 @app.on_message(
     filters.command(["all", "mention", "mentionall"], prefixes=["/", "@", ".", "#"])
     & admin_filter
 )
 async def tag_all_users(_, message):
+
     replied = message.reply_to_message
     if len(message.command) < 2 and not replied:
-        return await message.reply_text("Use /all with a message or reply to tag everyone.")
+        await message.reply_text(
+            " ɢɪᴠᴇ sᴏᴍᴇ ᴛᴇxᴛ ᴛᴏ ᴛᴀɢ ᴀʟʟ, ʟɪᴋᴇ » @all Hi Friends"
+        )
+        return
     if replied:
         SPAM_CHATS.append(message.chat.id)
-        usernum, usertxt = 0, ""
+        usernum = 0
+        usertxt = ""
         async for m in app.get_chat_members(message.chat.id):
             if message.chat.id not in SPAM_CHATS:
                 break
             usernum += 1
-            usertxt += f"\n➥ [{m.user.first_name}](tg://user?id={m.user.id})"
+            usertxt += f"\n⊚ [{m.user.first_name}](tg://user?id={m.user.id})\n"
             if usernum == 5:
                 await replied.reply_text(usertxt)
                 await asyncio.sleep(2)
-                usernum, usertxt = 0, ""
+                usernum = 0
+                usertxt = ""
         try:
             SPAM_CHATS.remove(message.chat.id)
-        except:
+        except Exception:
             pass
     else:
         text = message.text.split(None, 1)[1]
+
         SPAM_CHATS.append(message.chat.id)
-        usernum, usertxt = 0, ""
+        usernum = 0
+        usertxt = ""
         async for m in app.get_chat_members(message.chat.id):
             if message.chat.id not in SPAM_CHATS:
                 break
             usernum += 1
-            usertxt += f"\n➥ [{m.user.first_name}](tg://user?id={m.user.id})"
+            usertxt += f"\n⊚ [{m.user.first_name}](tg://user?id={m.user.id})\n"
             if usernum == 5:
                 await app.send_message(
                     message.chat.id,
-                    f"{text}\n{usertxt}\n\n ➜ Ongoing tagging » /cancel",
+                    f"{text}\n{usertxt}\n\n ➥ ᴏғғ ᴛᴀɢɢɪɴɢ ʙʏ » /cancel ",
                 )
                 await asyncio.sleep(2)
-                usernum, usertxt = 0, ""
+                usernum = 0
+                usertxt = ""
         try:
             SPAM_CHATS.remove(message.chat.id)
-        except:
+        except Exception:
             pass
 
-# --------------------------- STOP MENTION --------------------------- #
+
 @app.on_message(
     filters.command(
-        ["stopmention", "offall", "cancel", "allstop", "stopall",
-         "cancelmention", "offmention", "mentionoff", "alloff",
-         "cancelall", "allcancel"],
+        [
+            "stopmention",
+            "offall",
+            "cancel",
+            "allstop",
+            "stopall",
+            "cancelmention",
+            "offmention",
+            "mentionoff",
+            "alloff",
+            "cancelall",
+            "allcancel",
+        ],
         prefixes=["/", "@", "#"],
-    ) & admin_filter
+    )
+    & admin_filter
 )
 async def cancelcmd(_, message):
     chat_id = message.chat.id
     if chat_id in SPAM_CHATS:
         try:
             SPAM_CHATS.remove(chat_id)
-        except:
+        except Exception:
             pass
-        return await message.reply_text("✅ Tagging process stopped successfully!")
+        return await message.reply_text("ᴛᴀɢɢɪɴɢ ᴘʀᴏᴄᴇss sᴜᴄᴄᴇssғᴜʟʟʏ sᴛᴏᴘᴘᴇᴅ!")
+
     else:
-        return await message.reply_text("No tagging process is running!")
+        await message.reply_text("ɴᴏ ᴘʀᴏᴄᴇss ᴏɴɢᴏɪɴɢ!")
+        return
 
-# --------------------------- TAG ALL WITH RANDOM --------------------------- #
-@app.on_message(filters.command(["tagall"], prefixes=["/", "@", ".", "#"]))
-async def mentionall(client, message):
-    chat_id = message.chat.id
-    if message.chat.type == ChatType.PRIVATE:
-        return await message.reply("This command works only in groups!")
-
-    # Admin check
-    try:
-        participant = await client.get_chat_member(chat_id, message.from_user.id)
-    except UserNotParticipant:
-        return await message.reply("Only admins can use this command!")
-    else:
-        if participant.status not in (ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.OWNER):
-            return await message.reply("You must be an admin to use this command!")
-
-    if message.text:
-        mode = "text_on_cmd"
-        msg = message.text
-    elif message.reply_to_message:
-        mode = "text_on_reply"
-        msg = message.reply_to_message
-    else:
-        return await message.reply("Use /tagall with a message or reply to one.")
-
-    if chat_id in spam_chats:
-        return await message.reply("Tagging already in progress...")
-    spam_chats.append(chat_id)
 import asyncio
 import random
 
@@ -176,7 +166,7 @@ TAGMES = [
     " 𝐀𝐚𝐩 𝐊𝐚𝐡𝐚 𝐒𝐞 𝐇𝐨..??🙃 ",
     " 𝐇𝐞𝐥𝐥𝐨 𝐉𝐢 𝐍𝐚𝐦𝐚𝐬𝐭𝐞😛 ",
     " 𝐇𝐞𝐥𝐥𝐨 𝐁𝐚𝐛𝐲 𝐊𝐤𝐫𝐡..?🤔 ",
-    " 𝐃𝐨 𝐘𝐨𝐮 𝐊𝐧𝐨𝐰 𝐖𝐡𝐨 𝐈𝐬 𝐌𝐲 𝐎𝐰𝐧𝐞𝐫 [@i_t_z_broken].? ",
+    " 𝐃𝐨 𝐘𝐨𝐮 𝐊𝐧𝐨𝐰 𝐖𝐡𝐨 𝐈𝐬 𝐌𝐲 𝐎𝐰𝐧𝐞𝐫 [@Blood_shadow_01].? ",
     " 𝐂𝐡𝐥𝐨 𝐊𝐮𝐜𝐡 𝐆𝐚𝐦𝐞 𝐊𝐡𝐞𝐥𝐭𝐞 𝐇𝐚𝐢𝐧.🤗 ",
     " 𝐀𝐮𝐫 𝐁𝐚𝐭𝐚𝐨 𝐊𝐚𝐢𝐬𝐞 𝐇𝐨 𝐁𝐚𝐛𝐲😇 ",
     " 𝐓𝐮𝐦𝐡𝐚𝐫𝐢 𝐌𝐮𝐦𝐦𝐲 𝐊𝐲𝐚 𝐊𝐚𝐫 𝐑𝐚𝐡𝐢 𝐇𝐚𝐢🤭 ",
@@ -204,7 +194,7 @@ TAGMES = [
     " 𝐓𝐮𝐦𝐡𝐞 𝐊𝐨𝐧 𝐒𝐚 𝐌𝐮𝐬𝐢𝐜 𝐒𝐮𝐧𝐧𝐚 𝐏𝐚𝐬𝐚𝐧𝐝 𝐇𝐚𝐢..?🙃 ",
     " 𝐒𝐚𝐫𝐚 𝐊𝐚𝐦 𝐊𝐡𝐚𝐭𝐚𝐦 𝐇𝐨 𝐆𝐲𝐚 𝐀𝐚𝐩𝐤𝐚..?🙃 ",
     " 𝐊𝐚𝐡𝐚 𝐒𝐞 𝐇𝐨 𝐀𝐚𝐩😊 ",
-    " 𝐒𝐮𝐧𝐨 𝐍𝐚 [love 💞]🧐 ",
+    " 𝐒𝐮𝐧𝐨 𝐍𝐚 [@Love 💞]🧐 ",
     " 𝐌𝐞𝐫𝐚 𝐄𝐤 𝐊𝐚𝐚𝐦 𝐊𝐚𝐫 𝐃𝐨𝐠𝐞..? ",
     " 𝐁𝐲 𝐓𝐚𝐭𝐚 𝐌𝐚𝐭 𝐁𝐚𝐭 𝐊𝐚𝐫𝐧𝐚 𝐀𝐚𝐣 𝐊𝐞 𝐁𝐚𝐝😠 ",
     " 𝐌𝐨𝐦 𝐃𝐚𝐝 𝐊𝐚𝐢𝐬𝐞 𝐇𝐚𝐢𝐧..?❤ ",
@@ -236,13 +226,13 @@ TAGMES = [
     " 𝐀𝐚𝐨 𝐏𝐚𝐫𝐭𝐲 𝐊𝐚𝐫𝐭𝐞 𝐇𝐚𝐢𝐧😋🥳 ",
     " 𝐇𝐞𝐦𝐥𝐨𝐨🧐 ",
     " 𝐌𝐮𝐣𝐡𝐞 𝐁𝐡𝐮𝐥 𝐆𝐲𝐞 𝐊𝐲𝐚🥺 ",
-    " 𝐘𝐚𝐡𝐚 𝐀𝐚 𝐉𝐚𝐨:-[Love 💞]  𝐌𝐚𝐬𝐭𝐢 𝐊𝐚𝐫𝐞𝐧𝐠𝐞 🤭🤭 ",
+    " 𝐘𝐚𝐡𝐚 𝐀𝐚 𝐉𝐚𝐨:-[@Shadow_Empire_01]  𝐌𝐚𝐬𝐭𝐢 𝐊𝐚𝐫𝐞𝐧𝐠𝐞 🤭🤭 ",
     " 𝐓𝐫𝐮𝐭𝐡 𝐀𝐧𝐝 𝐃𝐚𝐫𝐞 𝐊𝐡𝐞𝐥𝐨𝐠𝐞..? 😊 ",
     " 𝐀𝐚𝐣 𝐌𝐮𝐦𝐦𝐲 𝐍𝐞 𝐃𝐚𝐭𝐚 𝐘𝐫🥺🥺 ",
     " 𝐉𝐨𝐢𝐧 𝐊𝐚𝐫 𝐋𝐨🤗 ",
     " 𝐄𝐤 𝐃𝐢𝐥 𝐇𝐚𝐢 𝐄𝐤 𝐃𝐢𝐥 𝐇𝐢 𝐓𝐨 𝐇𝐚𝐢😗😗 ",
     " 𝐓𝐮𝐦𝐡𝐚𝐫𝐞 𝐃𝐨𝐬𝐭 𝐊𝐚𝐡𝐚 𝐆𝐲𝐞🥺 ",
-    " 𝐌𝐲 𝐂𝐮𝐭𝐞 𝐎𝐰𝐧𝐞𝐫{ @i_t_z_broken}🥰 ",
+    " 𝐌𝐲 𝐂𝐮𝐭𝐞 𝐎𝐰𝐧𝐞𝐫{ @Blood_Shadow_01}🥰 ",
     " 𝐊𝐚𝐡𝐚 𝐊𝐡𝐨𝐲𝐞 𝐇𝐨 𝐉𝐚𝐚𝐧😜 ",
     " 𝐆𝐨𝐨𝐝 𝐍8 𝐉𝐢 𝐁𝐡𝐮𝐭 𝐑𝐚𝐭 𝐇𝐨 𝐠𝐲𝐢🥰 ",
 ]
