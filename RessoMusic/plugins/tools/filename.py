@@ -26,7 +26,7 @@ async def tag_all_users(_, client, message):
         SPAM_CHATS.append(message.chat.id)
         usernum = 0
         usertxt = ""
-        async for m in app.get_chat_members(message.chat.id):
+        async for m in client.get_chat_members(message.chat.id):
             if message.chat.id not in SPAM_CHATS:
                 break
             usernum += 1
@@ -46,13 +46,13 @@ async def tag_all_users(_, client, message):
         SPAM_CHATS.append(message.chat.id)
         usernum = 0
         usertxt = ""
-        async for m in app.get_chat_members(message.chat.id):
+        async for m in client.get_chat_members(message.chat.id):
             if message.chat.id not in SPAM_CHATS:
                 break
             usernum += 1
             usertxt += f"\n⊚ [{m.user.first_name}](tg://user?id={m.user.id})\n"
             if usernum == 5:
-                await app.send_message(
+                await client.send_message(
                     message.chat.id,
                     f"{text}\n{usertxt}\n\n ➥ ᴏғғ ᴛᴀɢɢɪɴɢ ʙʏ » /cancel ",
                 )
