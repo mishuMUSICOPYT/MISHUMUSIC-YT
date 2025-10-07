@@ -1,6 +1,8 @@
 import asyncio
 
 from pyrogram import filters
+from pyrogram.enums import ChatMemberStatus, ChatType
+from pyrogram.errors import UserNotParticipant
 
 from RessoMusic import app
 from RessoMusic.utils.branded_ban import admin_filter
@@ -12,7 +14,7 @@ SPAM_CHATS = []
     filters.command(["all", "mention", "mentionall"], prefixes=["/", "@", ".", "#"])
     & admin_filter
 )
-async def tag_all_users(_, message):
+async def tag_all_users(_, client, message):
 
     replied = message.reply_to_message
     if len(message.command) < 2 and not replied:
