@@ -10,7 +10,7 @@ from RessoMusic.utils.branded_ban import admin_filter
 SPAM_CHATS = []
 
 
-@app.on_message(
+@RessoMusic.on_message(
     filters.command(["all", "mention", "mentionall"], prefixes=["/", "@", ".", "#"])
     & admin_filter
 )
@@ -65,7 +65,7 @@ async def tag_all_users(_, client, message):
             pass
 
 
-@app.on_message(
+@RessoMusic.on_message(
     filters.command(
         [
             "stopmention",
@@ -84,7 +84,7 @@ async def tag_all_users(_, client, message):
     )
     & admin_filter
 )
-async def cancelcmd(_, message):
+async def cancelcmd(_, client, message):
     chat_id = message.chat.id
     if chat_id in SPAM_CHATS:
         try:
@@ -255,7 +255,7 @@ VC_TAG = [
 ]
 
 
-@app.on_message(filters.command(["tagall"], prefixes=["/", "@", ".", "#"]))
+@RessoMusic.on_message(filters.command(["tagall"], prefixes=["/", "@", ".", "#"]))
 async def mentionall(client, message):
     chat_id = message.chat.id
     if message.chat.type == ChatType.PRIVATE:
@@ -323,7 +323,7 @@ async def mentionall(client, message):
         pass
 
 
-@app.on_message(filters.command(["tagoff", "tagstop", "cancel"]))
+@RessoMusic.on_message(filters.command(["tagoff", "tagstop", "cancel"]))
 async def cancel_spam(client, message):
     if not message.chat.id in spam_chats:
         return await message.reply("𝐂𝐮𝐫𝐫𝐞𝐧𝐭𝐥𝐲 𝐈'𝐦 𝐍𝐨𝐭 ..")
